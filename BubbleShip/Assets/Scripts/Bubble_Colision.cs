@@ -12,4 +12,9 @@ public class Bubble_Colision : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		Debug.Log (coll.gameObject.name);
+	}
 }
