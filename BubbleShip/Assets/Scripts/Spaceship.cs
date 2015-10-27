@@ -4,7 +4,11 @@ using System.Collections;
 public class Spaceship : MonoBehaviour {
 
 	public Vector2 speed = new Vector2(50,50);
+
 	public GameObject bubble;
+
+	//public bu bubble;
+
 	
 	// Update is called once per frame
 	void Update () {
