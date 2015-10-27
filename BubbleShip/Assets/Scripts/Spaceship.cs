@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Spaceship : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class Spaceship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		float inputX = Input.GetAxis ("Horizontal");
 		float inputY = Input.GetAxis ("Vertical");
 
