@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Spaceship_script : MonoBehaviour {
+public class Spaceship : MonoBehaviour {
 
 	public Vector2 speed = new Vector2(50,50);
-	public bu bubble;
+	public GameObject bubble;
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +18,7 @@ public class Spaceship_script : MonoBehaviour {
 		transform.Translate (movement);
 
 
-		GameObject bubble = (GameObject) Instantiate(wreck, transform.position, transform.rotation);
+		//Instantiate(bubble, transform.position, transform.rotation);
 
 	}
 }
