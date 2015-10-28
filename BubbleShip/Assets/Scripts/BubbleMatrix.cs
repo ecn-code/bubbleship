@@ -27,8 +27,8 @@ public class BubbleMatrix : MonoBehaviour {
 
 	//Calculate col and row with x and y position
 	void calcColAndRow(Vector3 position){
-		int col = position.x / COL_SIZE;
-		int row = position.y / ROW_SIZE;
+		int col = (int)position.x / COL_SIZE;
+		int row = (int)position.y / ROW_SIZE;
 	}
 
 	//insert Bubble into matrix
