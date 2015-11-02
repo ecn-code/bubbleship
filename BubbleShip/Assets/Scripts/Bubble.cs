@@ -8,7 +8,9 @@ public class Bubble : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Debug.Log ("Antes="+transform.position);
+		Debug.Log ("Ahora="+GameController.Instance().moveToCorrectPosition(transform.position));
+		transform.Translate (GameController.Instance().moveToCorrectPosition(transform.position));
 	}
 	
 	// Update is called once per frame
