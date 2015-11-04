@@ -4,20 +4,21 @@ using System.Collections;
 public class BubbleMatrix
 {
 
-	public const int ROW_SIZE = 10;
-	public const int COL_SIZE = 10;
+	public const int ROW_SIZE = 1;
+	public const int COL_SIZE = 1;
 
 	//Move Bubble to correct position
 	public Vector3 moveToCorrectPosition (Vector3 position)
 	{
 		Vector3 rowCol = calcColAndRow (position);
-		int x, y;
+		float x, y;
+		//Debug.Log (rowCol.y % 2);
 		if (rowCol.y % 2 == 0) {
-			x = (int)rowCol.x * COL_SIZE + COL_SIZE/2 - 1;
+			x = rowCol.x * COL_SIZE + COL_SIZE / 2f;
 		} else {
-			x = (int)rowCol.x * COL_SIZE + COL_SIZE / 2;
+			x = rowCol.x * COL_SIZE + COL_SIZE / 2f;
 		}
-		y = (int) rowCol.y * ROW_SIZE + ROW_SIZE / 2;
+		y = rowCol.y * ROW_SIZE + ROW_SIZE / 2f;
 		return new Vector3 (x, y, position.z);
 	}
 
