@@ -7,6 +7,13 @@ public class BubbleMatrix
 	public const int ROW_SIZE = 1;
 	public const int COL_SIZE = 1;
 
+	Hashtable matrixBubble;
+
+	public BubbleMatrix(){
+		matrixBubble = new Hashtable();
+	}
+
+
 	//Move Bubble to correct position
 	public Vector3 moveToCorrectPosition (Vector3 position)
 	{
@@ -14,7 +21,7 @@ public class BubbleMatrix
 		float x, y;
 		//Debug.Log (rowCol.y % 2);
 		if (rowCol.y % 2 == 0) {
-			x = rowCol.x * COL_SIZE + COL_SIZE / 2f;
+			x = rowCol.x * COL_SIZE + COL_SIZE / 2f + COL_SIZE / 2f;
 		} else {
 			x = rowCol.x * COL_SIZE + COL_SIZE / 2f;
 		}
@@ -32,9 +39,11 @@ public class BubbleMatrix
 	}
 
 	//insert Bubble into matrix
-	void insert ()
+	void insert (GameObject bubble)
 	{
-		//calcColAndRow y insert into matrix
+		//calcColAndRow and insert into matrix
+		Vector3 rowCol = calcColAndRow (bubble.transform.localPosition);
+		matrixBubble.Add ("x:"+rowCol.x+", y:"+rowCol.y,bubble);
 		//if bubble comes from the user, get neighbours and destroy if its necesary
 	}
 
