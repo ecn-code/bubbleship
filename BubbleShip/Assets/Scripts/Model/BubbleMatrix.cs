@@ -15,9 +15,15 @@ public class BubbleMatrix
 
 
 	//Move Bubble to correct position
-	public Vector3 moveToCorrectPosition (Vector3 position)
+	public Vector3 moveToCorrectPosition (Vector3 position, bool substract)
 	{
 		Vector3 rowCol = calcColAndRow (position);
+		if (substract) {
+			if (rowCol.y % 2 == 0){
+				position.x -= COL_SIZE / 2f;
+			}
+		}
+		rowCol = calcColAndRow (position);
 		float x, y;
 		//Debug.Log (rowCol.y % 2);
 		if (rowCol.y % 2 == 0) {

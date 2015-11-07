@@ -7,8 +7,8 @@ public class GameController{
 
 	BubbleMatrix bubbleMatrix;
 
-	public Vector3 moveToCorrectPosition(Vector3 pos){
-		return bubbleMatrix.moveToCorrectPosition (pos);
+	public Vector3 moveToCorrectPosition(Vector3 pos, bool substract){
+		return bubbleMatrix.moveToCorrectPosition (pos, substract);
 	}
 
 	public static GameController Instance() { 

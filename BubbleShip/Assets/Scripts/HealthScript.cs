@@ -9,11 +9,15 @@ public class HealthScript : MonoBehaviour {
 	// Method called when there is a collision between a bubble and the spaceship
 	void OnTriggerEnter2D (Collider2D collider){
 
-		Debug.Log("collision");
+
 
 
 		Bubble bubble = collider.gameObject.GetComponent<Bubble> ();
 
+		if (bubble.playerFired)
+			return;
+
+		Debug.Log("collision");
 		Debug.Log("Bubble Damage: "+ bubble.damage);
 
 		hp -= bubble.damage;

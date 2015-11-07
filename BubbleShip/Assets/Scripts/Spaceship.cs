@@ -34,14 +34,18 @@ public class Spaceship : MonoBehaviour {
 			timeLapsedLastFire = 0;
 			Bubble bScript = bubble.GetComponent<Bubble> ();
 			bScript.playerFired = true;
-			Instantiate (bubble, transform.position, transform.rotation);
+			var mousePos = Input.mousePosition;
+			mousePos.z = 59;
+			Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+			//Debug.Log("World:"+worldMousePosition+"Mouse:"+Input.mousePosition);
+			
+			Vector3 direction = worldMousePosition - transform.position;
+			//float angle = Mathf.Atan2(direction.y, direction.x);
 
-			Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Debug.Log("World:"+worldMousePosition+"Mouse:"+Input.mousePosition);
-			//transform.LookAt(worldMousePosition);
-			//Vector3 direction = worldMousePosition - transform.position;
-			//float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Atan2;
-			//bScript.speed = direction / 10f;
+			//Debug.Log(""+direction);
+			bScript.speed = direction;
+			GameObject b = Instantiate(bubble, transform.position, transform.rotation) as GameObject;
+			b.transform.parent = transform.parent;
 		}
 
 	}
