@@ -32,6 +32,7 @@ public class BubbleMatrix
 			x = rowCol.x * COL_SIZE + COL_SIZE / 2f;
 		}
 		y = rowCol.y * ROW_SIZE + ROW_SIZE / 2f;
+
 		return new Vector3 (x, y, position.z);
 	}
 
