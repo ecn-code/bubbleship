@@ -4,6 +4,13 @@ using System.Collections;
 public class HealthScript : MonoBehaviour {
 
 	public int hp = 3;
+	GameController gameController;
+
+	void Awake ()
+	{
+
+		gameController = GameController.Instance ();
+	}
 
 
 	// Method called when there is a collision between a bubble and the spaceship
@@ -24,7 +31,8 @@ public class HealthScript : MonoBehaviour {
 
 		Debug.Log("Lifes left: "+ hp);
 
-		Destroy (bubble.gameObject);
+		//Destroy (bubble.gameObject);
+		gameController.destroy (bubble.gameObject);
 
 		if (hp == 2) {
 			Debug.Log("hp==2");

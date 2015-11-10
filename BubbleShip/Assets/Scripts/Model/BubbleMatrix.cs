@@ -37,7 +37,7 @@ public class BubbleMatrix
 	}
 
 	//Calculate col and row with x and y position
-	Vector3 calcColAndRow (Vector3 position)
+	public Vector3 calcColAndRow (Vector3 position)
 	{
 		int col = (int)position.x / COL_SIZE;
 		int row = (int)position.y / ROW_SIZE;
@@ -46,16 +46,40 @@ public class BubbleMatrix
 	}
 
 	//insert Bubble into matrix
-	void insert (GameObject bubbleObj)
+	public void insert (GameObject bubbleObj)
 	{
 		//calcColAndRow and insert into matrix
 		Vector3 rowCol = calcColAndRow (bubbleObj.transform.localPosition);
-		matrixBubble.Add ("x:"+rowCol.x+", y:"+rowCol.y,bubbleObj);
-		//if bubble comes from the user, get neighbours and destroy if its necesary
-		Bubble bScript = bubbleObj.GetComponent<Bubble> ();
-		if (bScript.playerFired) {
-			
+		bubbleObj.transform.localPosition = moveToCorrectPosition (bubbleObj.transform.localPosition, false);
+		Bubble bubbleScript = bubbleObj.GetComponent<Bubble> ();
+		bubbleScript.rowCol = rowCol;
+		if (!matrixBubble.ContainsKey ("x:" + rowCol.x + ", y:" + rowCol.y)) {
+			matrixBubble.Add ("x:" + rowCol.x + ", y:" + rowCol.y, bubbleObj);
 		}
+		//Debug.Log ("INSERT: x:"+rowCol.x+", y:"+rowCol.y);
+	}
+
+	public void remove(string key){
+		matrixBubble.Remove (key);
+	}
+
+	public GameObject[] getNeighbours(Bubble bubbleScript, Vector3 localPosition){
+		Vector3 rowCol = bubbleScript.rowCol;
+		//Debug.Log ("--x:"+rowCol.x+", y:"+rowCol.y);
+		GameObject[] neighbours = new GameObject[6];
+		neighbours[0] = matrixBubble["x:"+(rowCol.x-1)+", y:"+(rowCol.y)] as GameObject;
+		neighbours[1] = matrixBubble["x:"+(rowCol.x+1)+", y:"+(rowCol.y)] as GameObject;
+		neighbours[2] = matrixBubble["x:"+(rowCol.x)+", y:"+(rowCol.y-1)] as GameObject;
+		neighbours[3] = matrixBubble["x:"+(rowCol.x)+", y:"+(rowCol.y+1)] as GameObject;
+		neighbours[4] = matrixBubble["x:"+(rowCol.x-1)+", y:"+(rowCol.y+1)] as GameObject;
+		neighbours[5] = matrixBubble["x:"+(rowCol.x-1)+", y:"+(rowCol.y-1)] as GameObject;
+		//Debug.Log (rowCol+""+neighbours[0]+"0");
+		//Debug.Log (rowCol+""+neighbours[1]+"1");
+		//Debug.Log (rowCol+""+neighbours[2]+"2");
+		//Debug.Log (rowCol+""+neighbours[3]+"3");
+		//Debug.Log (rowCol+""+neighbours[4]+"4");
+		//Debug.Log (rowCol+""+neighbours[5]+"5");
+		return neighbours;
 	}
 
 
