@@ -7,7 +7,7 @@ public class Spaceship : MonoBehaviour {
 	//velocidad
 	public Vector2 speed = new Vector2(0.8f, 0.5f);
 
-	public GameObject bubble;
+	public GameObject[] bubble;
 	public float timeLapsedLastFire = 0;
 
 	//public bu bubble;
@@ -32,7 +32,7 @@ public class Spaceship : MonoBehaviour {
 		bool fire = Input.GetButton ("Fire1");
 		if (fire && timeLapsedLastFire>0.5) {
 			timeLapsedLastFire = 0;
-			Bubble bScript = bubble.GetComponent<Bubble> ();
+			Bubble bScript = bubble[0].GetComponent<Bubble> ();
 			bScript.playerFired = true;
 			var mousePos = Input.mousePosition;
 			mousePos.z = 59;
@@ -44,7 +44,7 @@ public class Spaceship : MonoBehaviour {
 
 			//Debug.Log(""+direction);
 			bScript.speed = direction;
-			GameObject b = Instantiate(bubble, transform.position, transform.rotation) as GameObject;
+			GameObject b = Instantiate(bubble[0], transform.position, transform.rotation) as GameObject;
 			b.transform.parent = transform.parent;
 		}
 

@@ -8,6 +8,9 @@ public class Bubble : MonoBehaviour {
 	public bool playerFired = false;
 	public Vector3 speed, direction;
 	GameController gameController;
+	public enum BUBBLECOLOR {BLUE=0, RED=1, PURPLE=2, GREEN=3};
+	public BUBBLECOLOR bubbleColor;
+	public Sprite[] typeBubbles;
 
 	void Awake(){
 		if (!playerFired) {
@@ -15,6 +18,7 @@ public class Bubble : MonoBehaviour {
 		}
 		direction = new Vector3 (1,1,0);
 		gameController = GameController.Instance ();
+		GetComponent<SpriteRenderer>().sprite = typeBubbles[(int)bubbleColor];
 	}
 
 	// Use this for initialization

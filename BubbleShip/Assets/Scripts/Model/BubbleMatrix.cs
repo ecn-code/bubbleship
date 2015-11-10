@@ -46,12 +46,16 @@ public class BubbleMatrix
 	}
 
 	//insert Bubble into matrix
-	void insert (GameObject bubble)
+	void insert (GameObject bubbleObj)
 	{
 		//calcColAndRow and insert into matrix
-		Vector3 rowCol = calcColAndRow (bubble.transform.localPosition);
-		matrixBubble.Add ("x:"+rowCol.x+", y:"+rowCol.y,bubble);
+		Vector3 rowCol = calcColAndRow (bubbleObj.transform.localPosition);
+		matrixBubble.Add ("x:"+rowCol.x+", y:"+rowCol.y,bubbleObj);
 		//if bubble comes from the user, get neighbours and destroy if its necesary
+		Bubble bScript = bubbleObj.GetComponent<Bubble> ();
+		if (bScript.playerFired) {
+			
+		}
 	}
 
 
