@@ -10,8 +10,15 @@ public class Spaceship : MonoBehaviour {
 
 	public GameObject bubble;
 	public float timeLapsedLastFire = 0;
+	private Bubble.BUBBLECOLOR actualBubble, nextBubble;
+	Bubble bScript;
 
-	//public bu bubble;
+	void Awake(){
+		bScript = bubble.GetComponent<Bubble> ();
+		actualBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+		nextBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+		updateBubbles ();
+	}
 
 	
 	// Update is called once per frame
@@ -33,7 +40,7 @@ public class Spaceship : MonoBehaviour {
 		bool fire = Input.GetButton ("Fire1");
 		if (fire && timeLapsedLastFire>0.5) {
 			timeLapsedLastFire = 0;
-			Bubble bScript = bubble.GetComponent<Bubble> ();
+
 			bScript.playerFired = true;
 			var mousePos = Input.mousePosition;
 			mousePos.z = 59;
@@ -45,10 +52,21 @@ public class Spaceship : MonoBehaviour {
 
 			//Debug.Log(""+direction);
 			bScript.speed = direction;
-			bScript.bubbleColor = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+			bScript.bubbleColor = actualBubble;
 			GameObject b = Instantiate(bubble, transform.position, transform.rotation) as GameObject;
 			b.transform.parent = transform.parent;
+
+			actualBubble = nextBubble;
+			nextBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+			updateBubbles();
 		}
 
+	}
+
+	void updateBubbles(){
+		GameObject.FindGameObjectWithTag("ActualBubble")
+			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)actualBubble];
+		GameObject.FindGameObjectWithTag("NextBubble")
+			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)nextBubble];
 	}
 }
