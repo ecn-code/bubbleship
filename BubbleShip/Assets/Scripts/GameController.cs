@@ -8,10 +8,6 @@ public class GameController{
 
 	BubbleMatrix bubbleMatrix;
 
-	public Vector3 moveToCorrectPosition(Vector3 pos, bool substract){
-		return bubbleMatrix.moveToCorrectPosition (pos, substract);
-	}
-
 	public static GameController Instance() { 
 		
 		if (_instance==null)
@@ -27,9 +23,9 @@ public class GameController{
 		bubbleMatrix = new BubbleMatrix ();
 	}
 
-	public void insert (GameObject bubbleObj)
+	public void insert (GameObject bubbleObj, bool substract)
 	{
-		bubbleMatrix.insert (bubbleObj);
+		bubbleMatrix.insert (bubbleObj, substract);
 	}
 
 	public void destroyBubbles(GameObject bubbleObj){

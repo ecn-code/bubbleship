@@ -15,15 +15,9 @@ public class BubbleMatrix
 
 
 	//Move Bubble to correct position
-	public Vector3 moveToCorrectPosition (Vector3 position, bool substract)
+	public Vector3 moveToCorrectPosition (Vector3 position, Vector3 rowCol)
 	{
-		Vector3 rowCol = calcColAndRow (position);
-		if (substract) {
-			if (rowCol.y % 2 == 0){
-				position.x -= COL_SIZE / 2f;
-			}
-		}
-		rowCol = calcColAndRow (position);
+
 		float x, y;
 		//Debug.Log (rowCol.y % 2);
 		if (rowCol.y % 2 == 0) {
@@ -46,16 +40,25 @@ public class BubbleMatrix
 	}
 
 	//insert Bubble into matrix
-	public void insert (GameObject bubbleObj)
+	public void insert (GameObject bubbleObj, bool substract)
 	{
 		//calcColAndRow and insert into matrix
 		Vector3 rowCol = calcColAndRow (bubbleObj.transform.localPosition);
-		bubbleObj.transform.localPosition = moveToCorrectPosition (bubbleObj.transform.localPosition, false);
+		if (substract) {
+			if (rowCol.y % 2 == 0){
+				bubbleObj.transform.localPosition -= new Vector3(COL_SIZE / 2f, 0, 0);
+				rowCol = calcColAndRow (bubbleObj.transform.localPosition);
+			}
+		}
+
 		Bubble bubbleScript = bubbleObj.GetComponent<Bubble> ();
 		bubbleScript.rowCol = rowCol;
 		if (!matrixBubble.ContainsKey ("x:" + rowCol.x + ", y:" + rowCol.y)) {
 			matrixBubble.Add ("x:" + rowCol.x + ", y:" + rowCol.y, bubbleObj);
 		}
+		bubbleObj.transform.localPosition = 
+			moveToCorrectPosition (bubbleObj.transform.localPosition, bubbleScript.rowCol);
+		
 		//Debug.Log ("INSERT: x:"+rowCol.x+", y:"+rowCol.y);
 	}
 

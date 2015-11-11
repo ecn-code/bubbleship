@@ -37,7 +37,7 @@ public class Bubble : MonoBehaviour
 
 		//Debug.Log ("PlayerFired: "+playerFired);
 		if (!playerFired)
-			gameController.insert (gameObject);
+			gameController.insert (gameObject, false);
 			//transform.localPosition = gameController.moveToCorrectPosition (transform.localPosition, false);
 		//else Debug.Log ("Speed:"+speed);
 	}
@@ -62,7 +62,7 @@ public class Bubble : MonoBehaviour
 						(collider.gameObject.transform.localPosition, true);
 */
 			//insert bubble
-			gameController.insert(collider.gameObject);
+			gameController.insert(collider.gameObject, true);
 
 			gameController.destroyBubbles(collider.gameObject);
 
