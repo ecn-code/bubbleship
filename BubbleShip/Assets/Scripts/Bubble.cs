@@ -26,7 +26,11 @@ public class Bubble : MonoBehaviour
 		}
 		direction = new Vector3 (1, 1, 0);
 		gameController = GameController.Instance ();
-		GetComponent<SpriteRenderer> ().sprite = typeBubbles [(int)bubbleColor];
+		changeColor ((int)bubbleColor);
+	}
+
+	public void changeColor(int bubbleCol){
+		GetComponent<SpriteRenderer> ().sprite = typeBubbles [bubbleCol];
 	}
 
 	// Use this for initialization

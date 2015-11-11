@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Random=UnityEngine.Random;
 
 public class Spaceship : MonoBehaviour {
 
 	//velocidad
 	public Vector2 speed = new Vector2(0.8f, 0.5f);
 
-	public GameObject[] bubble;
+	public GameObject bubble;
 	public float timeLapsedLastFire = 0;
 
 	//public bu bubble;
@@ -32,19 +33,20 @@ public class Spaceship : MonoBehaviour {
 		bool fire = Input.GetButton ("Fire1");
 		if (fire && timeLapsedLastFire>0.5) {
 			timeLapsedLastFire = 0;
-			Bubble bScript = bubble[0].GetComponent<Bubble> ();
+			Bubble bScript = bubble.GetComponent<Bubble> ();
 			bScript.playerFired = true;
 			var mousePos = Input.mousePosition;
 			mousePos.z = 59;
 			Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePos);
 			//Debug.Log("World:"+worldMousePosition+"Mouse:"+Input.mousePosition);
-			
+
 			Vector3 direction = worldMousePosition - transform.position;
 			//float angle = Mathf.Atan2(direction.y, direction.x);
 
 			//Debug.Log(""+direction);
 			bScript.speed = direction;
-			GameObject b = Instantiate(bubble[0], transform.position, transform.rotation) as GameObject;
+			bScript.bubbleColor = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+			GameObject b = Instantiate(bubble, transform.position, transform.rotation) as GameObject;
 			b.transform.parent = transform.parent;
 		}
 
