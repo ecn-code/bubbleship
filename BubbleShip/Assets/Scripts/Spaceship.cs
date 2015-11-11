@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 using Random=UnityEngine.Random;
 
 public class Spaceship : MonoBehaviour {
@@ -24,6 +25,12 @@ public class Spaceship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		GameObject nextBubbleObj = GameObject.FindGameObjectWithTag ("NextBubble");
+		Vector3 wantedPos = Camera.main.WorldToScreenPoint (transform.position+ new Vector3(-1,-1,0));
+		nextBubbleObj.transform.position = wantedPos;
+		GameObject actualBubbleObj = GameObject.FindGameObjectWithTag ("ActualBubble");
+		wantedPos = Camera.main.WorldToScreenPoint (transform.position+ new Vector3(0,1,0));
+		actualBubbleObj.transform.position = wantedPos;
 
 		float inputX = Input.GetAxis ("Horizontal");
 		//float inputY = Input.GetAxis ("Vertical");
@@ -42,18 +49,18 @@ public class Spaceship : MonoBehaviour {
 			timeLapsedLastFire = 0;
 
 			bScript.playerFired = true;
-			var mousePos = Input.mousePosition;
+			Vector3 mousePos = Input.mousePosition;
 			mousePos.z = 59;
 			Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePos);
 			//Debug.Log("World:"+worldMousePosition+"Mouse:"+Input.mousePosition);
 
-			Vector3 direction = worldMousePosition - transform.position;
+			Vector3 direction = worldMousePosition - (transform.position + new Vector3(0,1,0));
 			//float angle = Mathf.Atan2(direction.y, direction.x);
 
 			//Debug.Log(""+direction);
 			bScript.speed = direction;
 			bScript.bubbleColor = actualBubble;
-			GameObject b = Instantiate(bubble, transform.position, transform.rotation) as GameObject;
+			GameObject b = Instantiate(bubble, transform.position+ new Vector3(0,1,0), transform.rotation) as GameObject;
 			b.transform.parent = transform.parent;
 
 			actualBubble = nextBubble;
@@ -65,8 +72,8 @@ public class Spaceship : MonoBehaviour {
 
 	void updateBubbles(){
 		GameObject.FindGameObjectWithTag("ActualBubble")
-			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)actualBubble];
+			.GetComponent<Image> ().sprite = bScript.typeBubbles[(int)actualBubble];
 		GameObject.FindGameObjectWithTag("NextBubble")
-			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)nextBubble];
+			.GetComponent<Image> ().sprite = bScript.typeBubbles[(int)nextBubble];
 	}
 }
