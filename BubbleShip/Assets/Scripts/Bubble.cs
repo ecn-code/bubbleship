@@ -74,6 +74,7 @@ public class Bubble : MonoBehaviour
 			scriptBubble.playerFired = false;
 		}
 	}
+
 	public void destroy(){
 		Destroy (gameObject);
 	}

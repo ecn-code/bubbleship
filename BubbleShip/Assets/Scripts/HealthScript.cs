@@ -23,8 +23,10 @@ public class HealthScript : MonoBehaviour {
 
 		Bubble bubble = collider.gameObject.GetComponent<Bubble> ();
 
-		if (bubble.playerFired)
+
+		if (bubble.playerFired) {
 			return;
+		}
 
 		Debug.Log("collision");
 		Debug.Log("Bubble Damage: "+ bubble.damage);

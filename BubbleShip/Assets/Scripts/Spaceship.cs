@@ -25,13 +25,6 @@ public class Spaceship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		GameObject nextBubbleObj = GameObject.FindGameObjectWithTag ("NextBubble");
-		Vector3 wantedPos = Camera.main.WorldToScreenPoint (transform.position+ new Vector3(-1,-1,0));
-		nextBubbleObj.transform.position = wantedPos;
-		GameObject actualBubbleObj = GameObject.FindGameObjectWithTag ("ActualBubble");
-		wantedPos = Camera.main.WorldToScreenPoint (transform.position+ new Vector3(0,1,0));
-		actualBubbleObj.transform.position = wantedPos;
-
 		float inputX = Input.GetAxis ("Horizontal");
 		//float inputY = Input.GetAxis ("Vertical");
 
@@ -60,6 +53,7 @@ public class Spaceship : MonoBehaviour {
 			//Debug.Log(""+direction);
 			bScript.speed = direction;
 			bScript.bubbleColor = actualBubble;
+
 			GameObject b = Instantiate(bubble, transform.position+ new Vector3(0,1,0), transform.rotation) as GameObject;
 			b.transform.parent = transform.parent;
 
@@ -72,8 +66,8 @@ public class Spaceship : MonoBehaviour {
 
 	void updateBubbles(){
 		GameObject.FindGameObjectWithTag("ActualBubble")
-			.GetComponent<Image> ().sprite = bScript.typeBubbles[(int)actualBubble];
+			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)actualBubble];
 		GameObject.FindGameObjectWithTag("NextBubble")
-			.GetComponent<Image> ().sprite = bScript.typeBubbles[(int)nextBubble];
+			.GetComponent<SpriteRenderer> ().sprite = bScript.typeBubbles[(int)nextBubble];
 	}
 }
