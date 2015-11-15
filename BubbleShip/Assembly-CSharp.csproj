@@ -52,7 +52,6 @@
      <Compile Include="Assets\Scripts\GunBubble.cs" />
      <Compile Include="Assets\Scripts\HealthScript.cs" />
      <Compile Include="Assets\Scripts\Model\BubbleMatrix.cs" />
-     <Compile Include="Assets\Scripts\RepeatSpriteBoundary.cs" />
      <Compile Include="Assets\Scripts\Scrolling.cs" />
      <Compile Include="Assets\Scripts\Spaceship.cs" />
  <Reference Include="UnityEngine.Networking">
