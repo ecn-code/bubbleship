@@ -16,9 +16,13 @@ public class Spaceship : MonoBehaviour {
 
 	void Awake(){
 		bScript = bubble.GetComponent<Bubble> ();
-		actualBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
-		nextBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+		actualBubble = getRandomBubbleColor();
+		nextBubble = getRandomBubbleColor();
 		updateBubbles ();
+	}
+
+	private Bubble.BUBBLECOLOR getRandomBubbleColor(){
+		return (Bubble.BUBBLECOLOR)Random.Range(0, 4);
 	}
 
 	
@@ -58,7 +62,7 @@ public class Spaceship : MonoBehaviour {
 			b.transform.parent = transform.parent;
 
 			actualBubble = nextBubble;
-			nextBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
+			nextBubble = getRandomBubbleColor();
 			updateBubbles();
 		}
 
