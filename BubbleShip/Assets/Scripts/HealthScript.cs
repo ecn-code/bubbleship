@@ -17,7 +17,7 @@ public class HealthScript : MonoBehaviour {
 
 	// Method called when there is a collision between a bubble and the spaceship
 	void OnTriggerEnter2D (Collider2D collider){
-<<<<<<< Updated upstream
+
 		handleCollision (collider);
 	}
 
@@ -26,7 +26,6 @@ public class HealthScript : MonoBehaviour {
 	}
 
 	void handleCollision(Collider2D collider){
-=======
 	
 		if (collider.name == "Wall") {
 			return;
@@ -34,7 +33,7 @@ public class HealthScript : MonoBehaviour {
 
 		Debug.Log (collider.name);
 	
->>>>>>> Stashed changes
+
 		Bubble bubble = collider.gameObject.GetComponent<Bubble> ();
 		
 		

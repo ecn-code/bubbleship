@@ -15,7 +15,7 @@ public class Spaceship : MonoBehaviour {
 	Bubble bScript;
 
 	void Awake(){
-<<<<<<< Updated upstream
+
 		bScript = bubble.GetComponent<Bubble> ();
 		actualBubble = getRandomBubbleColor();
 		nextBubble = getRandomBubbleColor();
@@ -26,16 +26,8 @@ public class Spaceship : MonoBehaviour {
 		return (Bubble.BUBBLECOLOR)Random.Range(0, 4);
 	}
 
-	
-=======
-//		bScript = bubble.GetComponent<Bubble> ();
-		actualBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
-		nextBubble = (Bubble.BUBBLECOLOR)Random.Range(0, 3);
-		//updateBubbles ();
-	}
 
 
->>>>>>> Stashed changes
 	// Update is called once per frame
 	void Update () {
 
