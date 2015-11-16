@@ -7,6 +7,11 @@ public class Collision : MonoBehaviour {
 	public int hp = 3;
 	GameController gameController;
 	public Sprite hpRemoved;
+
+	//Richard
+	public GameObject GO_Explosion;
+	public AudioClip efecto_sonido;
+	//public GameObject Explosion_Nave;
 	
 	void Awake ()
 	{
@@ -44,6 +49,10 @@ public class Collision : MonoBehaviour {
 		if (bubble.playerFired) {
 				return;
 		}
+
+		// RICHARD ------
+		PlayExplosion ();
+
 			
 		Debug.Log ("collision");
 		Debug.Log ("Bubble Damage: " + bubble.damage);
@@ -73,5 +82,17 @@ public class Collision : MonoBehaviour {
 			//Destroy(GameObject.FindGameObjectWithTag("HP3"));
 			Destroy (gameObject);
 		}
+	}
+
+	void PlayExplosion(){
+		PlayReboundSound ();
+		GameObject explosion = (GameObject)Instantiate (GO_Explosion);
+		explosion.transform.position = transform.position;
+	}
+
+
+	//Richard
+	public void PlayReboundSound(){
+		AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
 	}
 }
