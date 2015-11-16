@@ -55,16 +55,14 @@ public class Collision : MonoBehaviour {
 			return;
 		}
 
-<<<<<<< HEAD
 		if (col.gameObject.tag == "NormalBubble") {
 
 			//Debug.Log ("collision");
 			Debug.Log ("Bubble Damage: " + bubble.damage);
-=======
-		// RICHARD ------
-		PlayExplosion ();
 
->>>>>>> origin/master
+		// RICHARD ------
+	//	PlayExplosion ();
+
 			
 			hp -= bubble.damage;
 			
@@ -85,7 +83,7 @@ public class Collision : MonoBehaviour {
 				//Destroy(GameObject.FindGameObjectWithTag("HP2"));
 			}
 			
-<<<<<<< HEAD
+
 			if (hp <= 0) {
 				Debug.Log ("hp==0");
 				GameObject.FindGameObjectWithTag ("HP3").GetComponent<Image> ().sprite = hpRemoved;
@@ -97,14 +95,6 @@ public class Collision : MonoBehaviour {
 
 	}// end OnTriggerEnter2D
 
-=======
-		if (hp <= 0) {
-			Debug.Log ("hp==0");
-			GameObject.FindGameObjectWithTag ("HP3").GetComponent<Image> ().sprite = hpRemoved;
-			//Destroy(GameObject.FindGameObjectWithTag("HP3"));
-			Destroy (gameObject);
-		}
-	}
 
 	void PlayExplosion(){
 		PlayReboundSound ();
@@ -117,5 +107,5 @@ public class Collision : MonoBehaviour {
 	public void PlayReboundSound(){
 		AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
 	}
->>>>>>> origin/master
+
 }
