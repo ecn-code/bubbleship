@@ -45,6 +45,7 @@ public class Spaceship : MonoBehaviour {
 		timeLapsedLastFire += Time.deltaTime;
 		bool fire = Input.GetButton ("Fire1");
 		if (fire && timeLapsedLastFire>0.5) {
+
 			timeLapsedLastFire = 0;
 
 			bScript.playerFired = true;
@@ -60,7 +61,16 @@ public class Spaceship : MonoBehaviour {
 			bScript.speed = direction;
 			bScript.bubbleColor = actualBubble;
 
-			GameObject b = Instantiate(bubble, transform.position+ new Vector3(0,1,0), transform.rotation) as GameObject;
+			GameObject b = Instantiate(bubble, transform.position+ new Vector3(0,(float) 1.8,0), transform.rotation) as GameObject;
+
+			//ShootedBubble shootedBubble = new ShootedBubble(direction);
+
+
+			b.AddComponent<CircleCollider2D>();
+
+			ShootedBubble shootedBubble = b.AddComponent<ShootedBubble>();
+			shootedBubble.SettingDirection(direction);
+
 			b.transform.parent = transform.parent;
 
 			actualBubble = nextBubble;
