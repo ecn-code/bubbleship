@@ -11,13 +11,15 @@ public class Collision : MonoBehaviour {
 	//Richard
 	public GameObject GO_Explosion;
 	public AudioClip efecto_sonido;
+	private AudioSource audiosource;
 	//public GameObject Explosion_Nave;
 	
 	void Awake ()
 	{
 		
 		gameController = GameController.Instance ();
-
+		gameObject.AddComponent<AudioSource> ();
+		audiosource = gameObject.GetComponent<AudioSource> ();
 	}
 	
 	
@@ -107,7 +109,8 @@ public class Collision : MonoBehaviour {
 
 	//Richard
 	public void PlayReboundSound(){
-		AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
+		//AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
+		audiosource.PlayOneShot (efecto_sonido);
 	}
 
 }
