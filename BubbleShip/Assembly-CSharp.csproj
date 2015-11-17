@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Gui\Explosion\nave_2.cs" />
      <Compile Include="Assets\Scripts\Gui\Jefe_Nivel\Enemigo_1_Torre.cs" />
      <Compile Include="Assets\Scripts\Gui\MeteoritosControllers\meteorito_1Controller.cs" />
+     <Compile Include="Assets\Scripts\Gui\PointerEventsController.cs" />
      <Compile Include="Assets\Scripts\Gui\Rebote\Rebote.cs" />
      <Compile Include="Assets\Scripts\GunBubble.cs" />
      <Compile Include="Assets\Scripts\HealthScript.cs" />

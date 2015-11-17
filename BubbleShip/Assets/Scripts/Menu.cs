@@ -4,6 +4,7 @@ public class Menu : MonoBehaviour {
 	// Private references to the objects we will need
 	private Animator animator;
 	private CanvasGroup canvasGroup;
+
 	// Property (it is a facade to an Animator's parameter
 	public bool IsOpen {
 		get { return animator.GetBool ("IsOpen"); }
@@ -16,6 +17,7 @@ public class Menu : MonoBehaviour {
 		canvasGroup = GetComponent<CanvasGroup> ();
 		var rec = GetComponent<RectTransform> ();
 		rec.offsetMin = rec.offsetMax = new Vector2 (0, 0);
+
 	}
 	// If the menu is active (it is in the "Open" state), make it
 	// interactable
