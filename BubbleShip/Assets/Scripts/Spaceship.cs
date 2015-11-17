@@ -68,8 +68,8 @@ public class Spaceship : MonoBehaviour {
 
 			b.AddComponent<CircleCollider2D>();
 
-			ShootedBubble shootedBubble = b.AddComponent<ShootedBubble>();
-			shootedBubble.SettingDirection(direction);
+			//ShootedBubble shootedBubble = b.AddComponent<ShootedBubble>();
+			//shootedBubble.SettingDirection(direction);
 
 			b.transform.parent = transform.parent;
 

@@ -6,7 +6,7 @@ public class Bubble : MonoBehaviour
 
 	public int damage = 1;
 	public bool isEnemy = false;
-	public bool playerFired = false;
+	public bool playerFired = false, oneContact=false;
 	public Vector3 speed, direction, rowCol;
 	GameController gameController;
 	public enum BUBBLECOLOR
@@ -66,9 +66,9 @@ public class Bubble : MonoBehaviour
 						(collider.gameObject.transform.localPosition, true);
 */
 			//insert bubble
-			gameController.insert(collider.gameObject, true);
+			gameController.insert (collider.gameObject, true);
 
-			gameController.destroyBubbles(collider.gameObject);
+			gameController.destroyBubbles (collider.gameObject);
 
 			//Detener
 			scriptBubble.playerFired = false;
