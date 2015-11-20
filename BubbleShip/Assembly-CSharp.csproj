@@ -65,7 +65,6 @@
      <Compile Include="Assets\Scripts\Model\BubbleMatrix.cs" />
      <Compile Include="Assets\Scripts\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Scrolling.cs" />
-     <Compile Include="Assets\Scripts\ShootedBubble.cs" />
      <Compile Include="Assets\Scripts\Spaceship.cs" />
      <Compile Include="Assets\Scripts\Wall.cs" />
  <Reference Include="UnityEngine.Networking">
