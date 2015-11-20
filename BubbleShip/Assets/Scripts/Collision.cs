@@ -58,10 +58,7 @@ public class Collision : MonoBehaviour {
 			return;
 		}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 		if (col.gameObject.tag == "NormalBubble") {
 
 			//Debug.Log ("collision");
@@ -70,11 +67,6 @@ public class Collision : MonoBehaviour {
 		// RICHARD ------
 	//	PlayExplosion ();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
-			
 			hp -= bubble.damage;
 			
 			Debug.Log ("Lifes left: " + hp);
@@ -106,10 +98,6 @@ public class Collision : MonoBehaviour {
 
 	}// end OnTriggerEnter2D
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 	void PlayExplosion(){
 		PlayReboundSound ();
 		GameObject explosion = (GameObject)Instantiate (GO_Explosion);
