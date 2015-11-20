@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Gui\PointerEventsController.cs" />
      <Compile Include="Assets\Scripts\Gui\Rebote\Rebote.cs" />
      <Compile Include="Assets\Scripts\GunBubble.cs" />
+     <Compile Include="Assets\Scripts\Jefe.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Model\BubbleMatrix.cs" />
