@@ -11,13 +11,15 @@ public class Collision : MonoBehaviour {
 	//Richard
 	public GameObject GO_Explosion;
 	public AudioClip efecto_sonido;
+	private AudioSource audiosource;
 	//public GameObject Explosion_Nave;
 	
 	void Awake ()
 	{
 		
 		gameController = GameController.Instance ();
-
+		gameObject.AddComponent<AudioSource> ();
+		audiosource = gameObject.GetComponent<AudioSource> ();
 	}
 	
 	
@@ -36,7 +38,7 @@ public class Collision : MonoBehaviour {
 		
 		Debug.Log ("Estoy en handleCollision: " + col.gameObject.name);
 
-		if (col.gameObject.tag == "RightWall" || col.gameObject.tag == "LeftWall") {
+		if (col.gameObject.tag == "Wall") {
 
 			Debug.Log ("Pared collision--------------------------");
 
@@ -51,10 +53,15 @@ public class Collision : MonoBehaviour {
 
 		Bubble bubble = col.gameObject.GetComponent<Bubble>();
 
-		if (bubble.playerFired) {
+		if (bubble.playerFired && !bubble.oneContact) {
+			bubble.oneContact = true;
 			return;
 		}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 		if (col.gameObject.tag == "NormalBubble") {
 
 			//Debug.Log ("collision");
@@ -63,6 +70,10 @@ public class Collision : MonoBehaviour {
 		// RICHARD ------
 	//	PlayExplosion ();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 			
 			hp -= bubble.damage;
 			
@@ -95,7 +106,10 @@ public class Collision : MonoBehaviour {
 
 	}// end OnTriggerEnter2D
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	void PlayExplosion(){
 		PlayReboundSound ();
 		GameObject explosion = (GameObject)Instantiate (GO_Explosion);
@@ -105,7 +119,8 @@ public class Collision : MonoBehaviour {
 
 	//Richard
 	public void PlayReboundSound(){
-		AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
+		//AudioSource.PlayClipAtPoint(efecto_sonido, transform.position);
+		audiosource.PlayOneShot (efecto_sonido);
 	}
 
 }
